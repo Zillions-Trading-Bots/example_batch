@@ -1,5 +1,5 @@
-resource "aws_iam_role" "devops-batch-example-execution-role" {
-  name = "devops-batch-example-execution-role"
+resource "aws_iam_role" "batch-example-execution-role" {
+  name = "batch-example-execution-role"
   path = "/"
 
   assume_role_policy = <<EOF
@@ -23,12 +23,12 @@ EOF
 
 # AWS managed policies
 resource "aws_iam_role_policy_attachment" "awsbatch_role_policy_attachment_execution_role" {
-  role       = aws_iam_role.devops-batch-example-execution-role.name
+  role       = aws_iam_role.batch-example-execution-role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
 
-resource "aws_iam_role" "devops-batch-example-job-role" {
-  name = "devops-batch-example-job-role"
+resource "aws_iam_role" "batch-example-job-role" {
+  name = "batch-example-job-role"
   path = "/"
 
   assume_role_policy = <<EOF
@@ -54,13 +54,13 @@ EOF
 
 # AWS managed policies
 resource "aws_iam_role_policy_attachment" "awsbatch_role_policy_attachment_job_role" {
-  role       = aws_iam_role.devops-batch-example-job-role.name
+  role       = aws_iam_role.batch-example-job-role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
 
 
-resource "aws_iam_role" "devops-batch-example-service-role" {
-  name = "devops-batch-example-service-role"
+resource "aws_iam_role" "batch-example-service-role" {
+  name = "batch-example-service-role"
   path = "/"
 
   assume_role_policy = <<EOF
@@ -84,6 +84,6 @@ EOF
 
 # AWS managed policies
 resource "aws_iam_role_policy_attachment" "awsbatch_role_policy_attachment" {
-  role       = aws_iam_role.devops-batch-example-service-role.name
+  role       = aws_iam_role.batch-example-service-role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole"
 }
