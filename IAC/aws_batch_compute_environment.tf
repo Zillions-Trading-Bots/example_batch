@@ -4,7 +4,7 @@ resource "aws_batch_compute_environment" "batch_example_fargate" {
   compute_resources {
     max_vcpus          = 16
     security_group_ids = [aws_security_group.batch_example_fargate_sg.id]
-    subnets            = var.compute_environment_subnets
+    subnets            = [for s in data.aws_subnet.subnets : s.id]
     type               = "FARGATE"
   }
 

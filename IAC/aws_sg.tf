@@ -1,7 +1,7 @@
 resource "aws_security_group" "batch_example_fargate_sg" {
   name        = "batch_example_fargate_sg"
   description = "batch_example_fargate_sg"
-  vpc_id      = var.vpc_id
+  vpc_id      = local.vpc.id
 
   ingress = [
     {

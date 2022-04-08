@@ -18,18 +18,6 @@ variable "aws_region" {
   description = "AWS region"
 }
 
-variable "ecr_values" {
-  type        = any
-  default     = {}
-  description = "AWS ECR configuration"
-}
-
-variable "ecs_values" {
-  type        = any
-  default     = {}
-  description = "AWS ECS configuration"
-}
-
 variable "lb_values" {
   type        = any
   default     = {}
@@ -42,28 +30,33 @@ variable "vpc" {
   description = "AWS VPC configuration"
 }
 
+# AWS BATCH
+variable "compute_environment_name" {
+  type        = string
+  default     = "example_batch"
+  description = "Compute Environment Name"
+}
+
+variable "job_queue_name" {
+  type        = string
+  default     = "example_batch_queue"
+  description = "Job Queue Name"
+}
+
+variable "job_definition_resource_vcpu" {
+  type        = number
+  default     = 0.25
+  description = "Job Definition Resource vCPU"
+}
+
+variable "job_definition_resource_memory" {
+  type        = number
+  default     = 512
+  description = "Job Definition Resource Memory"
+}
+
 variable "container" {
   type        = any
   default     = {}
   description = "Container configuration to deploy"
 }
-
-variable "registry_name" {
-  type        = string
-  default     = "example_ecs"
-  description = "Registry name in ECR"
-}
-
-
-variable "iac" {}
-
-variable "environment" {}
-variable "account_id" {}
-variable "vpc_id" {}
-
-# AWS BATCH
-variable "compute_environment_name" {}
-variable "compute_environment_subnets" {}
-variable "job_queue_name" {}
-variable "job_definition_resource_vcpu" {}
-variable "job_definition_resource_memory" {}
