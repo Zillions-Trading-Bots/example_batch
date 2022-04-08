@@ -4,9 +4,7 @@ on:
   push:
     branches:
       - main
-    paths:
-     - 'IAC/**'
-
+    
 env:
   TF_ACTIONS_WORKING_DIR: IAC
 
