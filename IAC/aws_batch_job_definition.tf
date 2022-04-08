@@ -7,8 +7,8 @@ resource "aws_batch_job_definition" "batch_example_jobdef" {
 
   container_properties = <<CONTAINER_PROPERTIES
 {
-  "command"     : ["server.py", "Argumentos", "que serão passados", "por argv para python"],
-  "image"       : "example_python_flask",
+  "command"     : ["server.py", "inversor", "123"],
+  "image"       : "${var.job_definition_image_full_url}",
   "fargatePlatformConfiguration": {
     "platformVersion": "LATEST"
   },
