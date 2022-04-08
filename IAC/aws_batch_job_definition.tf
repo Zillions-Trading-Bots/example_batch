@@ -1,5 +1,5 @@
 resource "aws_batch_job_definition" "batch_example_jobdef" {
-  name = "batch_example_jobdefinition_python"
+  name = "batch_example_jobdefinition"
   type = "container"
   platform_capabilities = [
     "FARGATE",
@@ -8,7 +8,7 @@ resource "aws_batch_job_definition" "batch_example_jobdef" {
   container_properties = <<CONTAINER_PROPERTIES
 {
   "command"     : ["server.py", "Argumentos", "que serão passados", "por argv para python"],
-  "image"       : "busybox",
+  "image"       : "example_python_flask",
   "fargatePlatformConfiguration": {
     "platformVersion": "LATEST"
   },
