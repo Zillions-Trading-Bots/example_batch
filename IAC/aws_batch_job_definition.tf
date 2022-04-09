@@ -7,8 +7,8 @@ resource "aws_batch_job_definition" "batch_example_jobdef" {
 
   container_properties = <<CONTAINER_PROPERTIES
 {
-  "command": ["echo", "test"],
-  "image": "busybox",
+  "command"     : ["server.py", "inversor", "123"],
+  "image"       : "${var.job_definition_image_full_url}",
   "fargatePlatformConfiguration": {
     "platformVersion": "LATEST"
   },
@@ -20,7 +20,7 @@ resource "aws_batch_job_definition" "batch_example_jobdef" {
   "jobRoleArn": "${aws_iam_role.batch-example-job-role.arn}",
   "networkConfiguration": { 
     "assignPublicIp": "ENABLED"
-  },
+  }
 }
 CONTAINER_PROPERTIES
   tags                 = var.default_tags
