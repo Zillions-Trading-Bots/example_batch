@@ -26,7 +26,7 @@ resource "aws_batch_job_definition" "batch_example_jobdef" {
     "options": {
       "awslogs-group": "batch_example_jobdefinition",
       "awslogs-region": "${var.aws_region}",
-      "awslogs-stream-prefix": ""
+      "awslogs-stream-prefix": "prefix"
     }    
   }  
 }
