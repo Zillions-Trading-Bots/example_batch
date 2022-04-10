@@ -53,6 +53,7 @@ EOF
 }
 
 resource "aws_iam_policy_attachment" "example-batch-logs-attachment" {
+  name       = "example-batch-logs-attachment"
   roles      = [aws_iam_role.batch-example-execution-role.name]
   policy_arn = aws_iam_policy.example_batch_policy_for_logs.arn
 }
