@@ -1,3 +1,9 @@
+resource "aws_cloudwatch_log_group" "example" {
+  name              = "batch_example_logs"
+  retention_in_days = 14
+}
+
+
 resource "aws_batch_job_definition" "batch_example_jobdef" {
   name = "batch_example_jobdefinition"
   type = "container"
@@ -24,7 +30,7 @@ resource "aws_batch_job_definition" "batch_example_jobdef" {
   "logConfiguration": { 
     "logDriver": "awslogs",
     "options": {
-      "awslogs-group": "batch_example_jobdefinition",
+      "awslogs-group": "${aws_cloudwatch_log_group.example.name}",
       "awslogs-region": "${var.aws_region}",
       "awslogs-stream-prefix": "prefix"
     }    
