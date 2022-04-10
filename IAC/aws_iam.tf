@@ -27,6 +27,37 @@ resource "aws_iam_role_policy_attachment" "awsbatch_role_policy_attachment_execu
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
 
+resource "aws_iam_policy" "example_batch_policy_for_logs" {
+  name        = "example-batch-logs"
+  description = "example batch logs"
+
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents",
+                "logs:DescribeLogStreams"
+            ],
+            "Resource": [
+                "arn:aws:logs:*:*:*"
+            ]
+        }
+    ]
+}
+EOF
+}
+
+resource "aws_iam_policy_attachment" "example-batch-logs-attachment" {
+  name       = "example-batch-logs-attachment"
+  role       = aws_iam_role.batch-example-execution-role.name
+  policy_arn = aws_iam_policy.example_batch_policy_for_logs.policy.arn
+}
+
 resource "aws_iam_role" "batch-example-job-role" {
   name = "batch-example-job-role"
   path = "/"

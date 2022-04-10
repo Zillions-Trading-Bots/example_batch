@@ -21,6 +21,7 @@ resource "aws_batch_job_definition" "batch_example_jobdef" {
   "networkConfiguration": { 
     "assignPublicIp": "ENABLED"
   }
+  
 }
 CONTAINER_PROPERTIES
 
