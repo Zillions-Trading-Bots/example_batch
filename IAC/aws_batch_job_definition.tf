@@ -7,7 +7,7 @@ resource "aws_batch_job_definition" "batch_example_jobdef" {
 
   container_properties = <<CONTAINER_PROPERTIES
 {
-  "command"     : ["entry_shell.py", "inversor", "123"],
+  "command"     : [],
   "image"       : "${var.job_definition_image_full_url}",
   "fargatePlatformConfiguration": {
     "platformVersion": "LATEST"
@@ -23,7 +23,7 @@ resource "aws_batch_job_definition" "batch_example_jobdef" {
   }
 }
 CONTAINER_PROPERTIES
-  tags                 = var.default_tags
 
+  tags     = var.default_tags
   provider = aws
 }
