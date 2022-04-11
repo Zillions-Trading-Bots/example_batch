@@ -26,15 +26,8 @@ resource "aws_batch_job_definition" "batch_example_jobdef" {
   "jobRoleArn": "${aws_iam_role.batch-example-job-role.arn}",
   "networkConfiguration": { 
     "assignPublicIp": "ENABLED"
-  },
-  "logConfiguration": { 
-    "logDriver": "awslogs",
-    "options": {
-      "awslogs-group": "${aws_cloudwatch_log_group.example.name}",
-      "awslogs-region": "${var.aws_region}",
-      "awslogs-stream-prefix": "prefix"
-    }    
-  }  
+  }
+
 }
 CONTAINER_PROPERTIES
 
