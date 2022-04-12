@@ -41,7 +41,7 @@ variable "compute_environment_name" {
 variable "job_definition_image_full_url" {
   type = string
   #default     = "amazonlinux"
-  default     = "016431746308.dkr.ecr.us-east-1.amazonaws.com/example_python_flask:v1.0.6"
+  default     = "016431746308.dkr.ecr.us-east-1.amazonaws.com/example_python_flask:v1.0.7"
   description = "Job Definition Image Full URL"
 }
 
