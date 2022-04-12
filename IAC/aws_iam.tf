@@ -41,7 +41,8 @@ resource "aws_iam_policy" "example_batch_policy_for_logs" {
                 "logs:CreateLogGroup",
                 "logs:CreateLogStream",
                 "logs:PutLogEvents",
-                "logs:DescribeLogStreams"
+                "logs:DescribeLogStreams",
+                "cloudwatch:*"
             ],
             "Resource": [
                 "*"
