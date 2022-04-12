@@ -3,14 +3,14 @@ data "aws_vpc" "vpc" {
   default = local.use_default_vpc
 }
 
-data "aws_subnet_ids" "subnets" {
-  vpc_id = data.aws_vpc.vpc.id
+data "aws_subnets" "existing_subnets" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.vpc.id]
+  }
 }
 
 data "aws_subnet" "subnets" {
-  for_each = data.aws_subnet_ids.subnets.ids
-  vpc_id   = data.aws_vpc.vpc.id
+  for_each = toset(data.aws_subnets.existing_subnets.ids)
   id       = each.value
-  # availability_zone = each.value
 }
-
