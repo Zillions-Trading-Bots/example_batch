@@ -51,9 +51,11 @@ variable "job_queue_name" {
   description = "Job Queue Name"
 }
 
+
+#https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html
 variable "job_definition_resource_vcpu" {
   type        = number
-  default     = 1
+  default     = 0.25
   description = "Job Definition Resource vCPU"
 }
 
