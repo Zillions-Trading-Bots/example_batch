@@ -59,7 +59,7 @@ variable "job_definition_resource_vcpu" {
 
 variable "job_definition_resource_memory" {
   type        = number
-  default     = 2048
+  default     = 512
   description = "Job Definition Resource Memory"
 }
 
