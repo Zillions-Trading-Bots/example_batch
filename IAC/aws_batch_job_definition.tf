@@ -1,11 +1,11 @@
 resource "aws_cloudwatch_log_group" "example" {
-  name              = "batch_example_logs"
-  retention_in_days = 14
+  name              = local.log_group.name
+  retention_in_days = local.log_group.retention_in_days
 }
 
 
 resource "aws_batch_job_definition" "batch_example_jobdef" {
-  name = "batch_example_jobdefinition"
+  name = "${var.app_name}_job_definition"
   type = "container"
   platform_capabilities = [
     "FARGATE",

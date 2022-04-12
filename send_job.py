@@ -6,7 +6,7 @@ import boto3
 batch = boto3.client("batch")
 
 result = batch.describe_job_definitions(
-    jobDefinitionName="batch_example_jobdefinition", status="ACTIVE"
+    jobDefinitionName="batch_example_job_definition", status="ACTIVE"
 )
 
 job_def_name = None

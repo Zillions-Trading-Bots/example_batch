@@ -72,4 +72,10 @@ variable "container" {
   description = "Container configuration to deploy"
 }
 
+variable "log_group_name" {
+  type        = string
+  default     = "batch_example_logs"
+  description = "Log Group Name"
+}
+
 
