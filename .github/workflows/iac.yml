@@ -4,11 +4,11 @@ on:
   push:
     # branches:
     #   - main
-    paths:
-     - 'IAC/**'
+    # paths:
+    #  - '*'
 
 env:
-  TF_ACTIONS_WORKING_DIR: IAC
+  TF_ACTIONS_WORKING_DIR: /
 
 jobs:
   terraform:
