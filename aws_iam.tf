@@ -1,5 +1,5 @@
 resource "aws_iam_role" "batch-example-execution-role" {
-  name = "batch-example-execution-role"
+  name = "${var.app_name}-${var.service_name}-execution-role"
   path = "/"
 
   assume_role_policy = <<EOF
@@ -28,7 +28,7 @@ resource "aws_iam_role_policy_attachment" "awsbatch_role_policy_attachment_execu
 }
 
 resource "aws_iam_role" "batch-example-job-role" {
-  name = "batch-example-job-role"
+  name = "${var.app_name}-${var.service_name}-job-role"
   path = "/"
 
   assume_role_policy = <<EOF
@@ -61,7 +61,7 @@ resource "aws_iam_role_policy_attachment" "awsbatch_role_policy_attachment_job_r
 
 
 resource "aws_iam_role" "batch-example-service-role" {
-  name = "batch-example-service-role"
+  name = "${var.app_name}-${var.service_name}-service-role"
   path = "/"
 
   assume_role_policy = <<EOF
@@ -91,8 +91,8 @@ resource "aws_iam_role_policy_attachment" "awsbatch_role_policy_attachment" {
 
 
 resource "aws_iam_policy" "example_batch_policy_for_logs" {
-  name        = "example-batch-logs"
-  description = "example batch logs"
+  name        = "${var.app_name}-${var.service_name}-logs"
+  description = "${var.app_name}-${var.service_name} logs"
 
   policy = <<EOF
 {
@@ -113,7 +113,7 @@ resource "aws_iam_policy" "example_batch_policy_for_logs" {
 EOF
 }
 resource "aws_iam_policy_attachment" "example-batch-logs-attachment" {
-  name       = "example-batch-logs-attachment"
+  name       = "${var.app_name}-${var.service_name}-logs-attachment"
   roles      = [aws_iam_role.batch-example-execution-role.name, aws_iam_role.batch-example-job-role.name, aws_iam_role.batch-example-service-role.name]
   policy_arn = aws_iam_policy.example_batch_policy_for_logs.arn
 }
