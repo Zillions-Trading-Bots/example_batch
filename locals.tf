@@ -17,7 +17,7 @@ locals {
     "Service" = var.service_name
   }
 
-  tags = merge(local.tags_defaults, local.tags)
+  tags = merge(local.tags_defaults, local.tags_defaults)
 
   job_queue_name = "${var.app_name}-${var.service_name}-batch-job-queue"
 
