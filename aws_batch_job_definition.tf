@@ -5,7 +5,7 @@ resource "aws_cloudwatch_log_group" "example" {
 
 
 resource "aws_batch_job_definition" "batch_example_jobdef" {
-  name = "${var.app_name}_job_definition"
+  name = "${var.app_name}-${var.service_name}_job_definition"
   type = "container"
   platform_capabilities = [
     "FARGATE",
