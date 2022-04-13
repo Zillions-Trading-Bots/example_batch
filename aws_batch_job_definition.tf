@@ -14,7 +14,7 @@ resource "aws_batch_job_definition" "batch_example_jobdef" {
   #"command"     : ["python","entry_shell.py","inverso","123"],
   container_properties = <<CONTAINER_PROPERTIES
 {
-  "command"     : [echo, "hello world"],
+  "command"     : ["echo", "hello world"],
   "image"       : "${var.job_definition_image_full_url}",
   "fargatePlatformConfiguration": {
     "platformVersion": "LATEST"
