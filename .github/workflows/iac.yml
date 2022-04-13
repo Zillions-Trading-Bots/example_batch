@@ -8,7 +8,7 @@ on:
     #  - '*'
 
 env:
-  TF_ACTIONS_WORKING_DIR: /
+  TF_ACTIONS_WORKING_DIR: .
 
 jobs:
   terraform:
