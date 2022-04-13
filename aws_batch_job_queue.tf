@@ -6,7 +6,7 @@ resource "aws_batch_job_queue" "batch_example_job_queue" {
     aws_batch_compute_environment.batch_example_fargate.arn,
   ]
 
-  tags     = var.tags
+  tags     = local.tags
   provider = aws
 
 }

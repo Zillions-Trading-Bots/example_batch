@@ -31,7 +31,7 @@ resource "aws_security_group" "batch_example_fargate_sg" {
     }
   ]
 
-  tags = var.tags
+  tags = local.tags
 
 
 }

@@ -39,6 +39,6 @@ resource "aws_batch_job_definition" "batch_example_jobdef" {
 }
 CONTAINER_PROPERTIES
 
-  tags     = var.tags
+  tags     = local.tags
   provider = aws
 }

@@ -1,9 +1,3 @@
-variable "workspace_name" {
-  type        = string
-  default     = "example_batch"
-  description = "App Name"
-}
-
 variable "app_name" {
   type        = string
   default     = "example"
@@ -25,8 +19,7 @@ variable "aws_region" {
 variable "tags" {
   type = map(string)
   default = {
-    "App"     = var.app_name
-    "Service" = var.service_name
+
   }
 }
 

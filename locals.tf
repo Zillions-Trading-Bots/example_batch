@@ -12,6 +12,13 @@ locals {
     retention_in_days = 7
   }
 
+  tags_defaults = {
+    "App"     = var.app_name
+    "Service" = var.service_name
+  }
+
+  tags = merge(local.tags_defaults, local.tags)
+
   job_queue_name = "${var.app_name}-${var.service_name}-batch-job-queue"
 
 }

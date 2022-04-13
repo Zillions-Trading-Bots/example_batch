@@ -15,7 +15,7 @@ terraform {
     organization = "afinoti"
 
     workspaces {
-      name = var.workspaces_name
+      name = "example_batch"
     }
   }
 }

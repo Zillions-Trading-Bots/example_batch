@@ -11,6 +11,6 @@ resource "aws_batch_compute_environment" "batch_example_fargate" {
   service_role = aws_iam_role.batch-example-service-role.arn
   type         = "MANAGED"
 
-  tags     = var.tags
+  tags     = local.tags
   provider = aws
 }
