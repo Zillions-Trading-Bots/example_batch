@@ -4,19 +4,19 @@ on:
   push:
     # branches:
     #   - main
-    # paths:
-    #  - '*'
+    paths:
+     - 'IAC/**'
 
-# env:
-#   TF_ACTIONS_WORKING_DIR: .
+env:
+  TF_ACTIONS_WORKING_DIR: IAC
 
 jobs:
   terraform:
     name: "Terraform"
     runs-on: ubuntu-latest
-    # defaults:
-    #   run:
-    #     working-directory: ${{ env.TF_ACTIONS_WORKING_DIR }}
+    defaults:
+      run:
+        working-directory: ${{ env.TF_ACTIONS_WORKING_DIR }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
