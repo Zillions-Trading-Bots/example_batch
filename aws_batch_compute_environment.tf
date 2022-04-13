@@ -1,5 +1,5 @@
 resource "aws_batch_compute_environment" "batch_example_fargate" {
-  compute_environment_name = var.compute_environment_name
+  compute_environment_name = var.app_name
 
   compute_resources {
     max_vcpus          = 8
@@ -11,7 +11,6 @@ resource "aws_batch_compute_environment" "batch_example_fargate" {
   service_role = aws_iam_role.batch-example-service-role.arn
   type         = "MANAGED"
 
-  tags = var.default_tags
-
+  tags     = var.tags
   provider = aws
 }

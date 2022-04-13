@@ -11,9 +11,10 @@ resource "aws_batch_job_definition" "batch_example_jobdef" {
     "FARGATE",
   ]
 
+  #"command"     : ["python","entry_shell.py","inverso","123"],
   container_properties = <<CONTAINER_PROPERTIES
 {
-  "command"     : ["python","entry_shell.py","inverso","123"],
+  "command"     : [echo, "hello world"],
   "image"       : "${var.job_definition_image_full_url}",
   "fargatePlatformConfiguration": {
     "platformVersion": "LATEST"
@@ -32,12 +33,12 @@ resource "aws_batch_job_definition" "batch_example_jobdef" {
     "options": {
       "awslogs-group": "${aws_cloudwatch_log_group.example.name}",
       "awslogs-region": "${var.aws_region}",
-      "awslogs-stream-prefix": "prefix"
+      "awslogs-stream-prefix": "${local.log_group.name}"
     }    
   }  
 }
 CONTAINER_PROPERTIES
 
-  tags     = var.default_tags
+  tags     = var.tags
   provider = aws
 }

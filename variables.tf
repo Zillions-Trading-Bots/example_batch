@@ -1,14 +1,19 @@
-variable "app_name" {
+variable "workspace_name" {
   type        = string
   default     = "example_batch"
   description = "App Name"
 }
 
-variable "default_tags" {
-  type = map(string)
-  default = {
-    "Name" = "example_batch"
-  }
+variable "app_name" {
+  type        = string
+  default     = "example"
+  description = "App Name"
+}
+
+variable "service_name" {
+  type        = string
+  default     = "example_batch"
+  description = "Service Name"
 }
 
 variable "aws_region" {
@@ -17,10 +22,12 @@ variable "aws_region" {
   description = "AWS region"
 }
 
-variable "lb_values" {
-  type        = any
-  default     = {}
-  description = "AWS Load Balancer configuration"
+variable "tags" {
+  type = map(string)
+  default = {
+    "App"     = var.app_name
+    "Service" = var.service_name
+  }
 }
 
 variable "vpc" {
@@ -29,27 +36,11 @@ variable "vpc" {
   description = "AWS VPC configuration"
 }
 
-# AWS BATCH
-variable "compute_environment_name" {
-  type        = string
-  default     = "example_batch"
-  description = "Compute Environment Name"
-}
-
-
-
 variable "job_definition_image_full_url" {
-  type = string
-  #default     = "amazonlinux"
-  default     = "016431746308.dkr.ecr.us-east-1.amazonaws.com/example_python_flask:v1.0.7"
+  type    = string
+  default = "amazonlinux"
+  #default     = "016431746308.dkr.ecr.us-east-1.amazonaws.com/example_python_flask:v1.0.7"
   description = "Job Definition Image Full URL"
-}
-
-
-variable "job_queue_name" {
-  type        = string
-  default     = "example_batch_queue"
-  description = "Job Queue Name"
 }
 
 
@@ -70,12 +61,6 @@ variable "container" {
   type        = any
   default     = {}
   description = "Container configuration to deploy"
-}
-
-variable "log_group_name" {
-  type        = string
-  default     = "batch_example_logs"
-  description = "Log Group Name"
 }
 
 
