@@ -60,7 +60,7 @@ resource "aws_iam_role_policy_attachment" "awsbatch_role_policy_attachment_job_r
 
 
 
-resource "aws_iam_role" "batch-example-service-role" {
+resource "aws_iam_role" "aws_batch_service_role" {
   name = "${var.app_name}-${var.service_name}-service-role"
   path = "/"
 
@@ -84,8 +84,8 @@ EOF
 }
 
 # AWS managed policies
-resource "aws_iam_role_policy_attachment" "awsbatch_role_policy_attachment" {
-  role       = aws_iam_role.batch-example-service-role.name
+resource "aws_iam_role_policy_attachment" "aws_batch_service_role_attachment" {
+  role       = aws_iam_role.aws_batch_service_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole"
 }
 
@@ -114,6 +114,6 @@ EOF
 }
 resource "aws_iam_policy_attachment" "example-batch-logs-attachment" {
   name       = "${var.app_name}-${var.service_name}-logs-attachment"
-  roles      = [aws_iam_role.batch-example-execution-role.name, aws_iam_role.batch-example-job-role.name, aws_iam_role.batch-example-service-role.name]
+  roles      = [aws_iam_role.batch-example-execution-role.name, aws_iam_role.batch-example-job-role.name, aws_iam_role.aws_batch_service_role.name]
   policy_arn = aws_iam_policy.example_batch_policy_for_logs.arn
 }

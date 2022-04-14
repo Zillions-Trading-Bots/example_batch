@@ -23,37 +23,10 @@ variable "tags" {
   }
 }
 
-variable "vpc" {
-  type        = any
-  default     = {}
-  description = "AWS VPC configuration"
-}
-
 variable "job_definition_image_full_url" {
   type    = string
   default = "amazonlinux"
   #default     = "016431746308.dkr.ecr.us-east-1.amazonaws.com/example_python_flask:v1.0.7"
   description = "Job Definition Image Full URL"
 }
-
-
-#https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html
-variable "job_definition_resource_vcpu" {
-  type        = number
-  default     = 0.25
-  description = "Job Definition Resource vCPU"
-}
-
-variable "job_definition_resource_memory" {
-  type        = number
-  default     = 512
-  description = "Job Definition Resource Memory"
-}
-
-variable "container" {
-  type        = any
-  default     = {}
-  description = "Container configuration to deploy"
-}
-
 
