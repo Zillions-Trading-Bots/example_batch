@@ -37,6 +37,13 @@ variable "job_definition_image_full_url" {
 }
 
 
+variable "max_vcpus" {
+  type        = number
+  default     = 20
+  description = "Max VCPUS"
+}
+
+
 #https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html
 variable "job_definition_resource_vcpu" {
   type        = number
